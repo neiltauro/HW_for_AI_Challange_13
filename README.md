@@ -16,6 +16,24 @@ It measures execution time for different vector sizes and shows their performanc
 
 ---
 
+## 🔹 What We Observe 🔹
+
+- The **CPU version executes faster** for small input sizes due to minimal overhead and direct sequential computation.
+
+- The **GPU kernel underperforms** for this Fibonacci implementation because:
+
+  - Each Fibonacci number depends directly on its two preceding values, creating a **serial dependency**.
+
+  - This dependency chain **prevents efficient parallelization**, which limits the advantages of GPU parallelism.
+
+- GPUs excel at large-scale parallel tasks with **independent computations**, but Fibonacci’s recursive data dependency makes it a poor fit for parallel GPU acceleration.
+
+- For algorithms with inherent sequential dependencies like Fibonacci, **CPU implementations often outperform GPU ones**, especially for smaller problem sizes.
+
+- This highlights the importance of **choosing the right computational platform based on the problem structure**.
+
+--
+
 ## 📚 Findings:
 
 - The execution time grows **with the vector size**, reflecting the additional computational and memory workloads.
