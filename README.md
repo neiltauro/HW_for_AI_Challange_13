@@ -16,6 +16,16 @@ It measures execution time for different vector sizes and shows their performanc
 
 ---
 
+## 📚 Findings:
+
+- The execution time grows **with the vector size**, reflecting the additional computational and memory workloads.
+- The GPU efficiently handles large workloads due to its massive parallelism, yielding faster per-element processing.
+- The main bottleneck for performance is often **global memory transfer** and not the kernel execution itself.
+- Proper selection of **thread block sizes** can aid performance but typically, the main scaling comes from the algorithm’s ability to leverage GPU parallelism.
+
+
+---
+
 ## 🛠 Installation and Compilation:
 
 ✅ **Requirements:**
@@ -28,15 +38,3 @@ It measures execution time for different vector sizes and shows their performanc
 
 ```bash
 nvcc saxpy.cu -o saxpy
-
-## 🔹 Conclusion and Findings 🔹
-
-In this benchmark, we successfully implemented a **SAXPY kernel with CUDA** and measured its execution time across a range of vector sizes.  
-We observed:
-
-- The execution time grows **with the vector size**, reflecting the additional computational and memory workloads.
-- The GPU efficiently handles large workloads due to its massive parallelism, yielding faster per-element processing.
-- The main bottleneck for performance is often **global memory transfer** and not the kernel execution itself.
-- Proper selection of **thread block sizes** can aid performance but typically, the main scaling comes from the algorithm’s ability to leverage GPU parallelism.
-
-Overall, this benchmark illustrates the power of CUDA for data-parallel workloads and emphasizes the importance of understanding both kernel execution and memory transfer mechanisms for optimizing performance.
